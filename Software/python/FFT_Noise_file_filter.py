@@ -11,7 +11,7 @@ Overlay_freqs = []                                 # empty list to store FFT val
 
 
 def Run_FFT( wav_file ):
-    OG_fs_rate, OG_Signal = wavfile.read(r"C:\Users\pd3dlab\Desktop\Samer FFT\talking.wav")
+    OG_fs_rate, OG_Signal = wavfile.read(r"C:\Users\flobo\Documents\Gits\PD3D\3dstet\Software\Audio Files\talking.wav")
     n = OG_Signal.shape[0]
     fs_rate, signal = wavfile.read( wav_file )                  # Reads .wav file
     l_audio = len(signal.shape)                                 # Get number of channels
@@ -48,7 +48,7 @@ def Run_FFT( wav_file ):
 
 '''audio file'''
 
-filename = r"C:\Users\pd3dlab\Desktop\Samer FFT\talking.wav"
+filename = r"C:\Users\flobo\Documents\Gits\PD3D\3dstet\Software\Audio Files\talking.wav"
 signal, FFT, FFT_side, freqs, freqs_side, t, Mag_db = Run_FFT( filename )
 
 plt.figure(1)
@@ -93,7 +93,7 @@ signal_signal = signal
 
 '''Noise file'''
 
-filename = r"C:\Users\pd3dlab\Desktop\Samer FFT\roomtone.wav"
+filename = r"C:\Users\flobo\Documents\Gits\PD3D\3dstet\Software\Audio Files\roomtone.wav"
 signal, FFT, FFT_side, freqs, freqs_side, t, Mag_db = Run_FFT( filename )
 
 plt.figure(2)
@@ -182,7 +182,7 @@ plt.grid(True)
 
 #----5-----
 
-OG_fs_rate, OG_Signal = wavfile.read(r"C:\Users\pd3dlab\Desktop\Samer FFT\talking.wav")
+OG_fs_rate, OG_Signal = wavfile.read(r"C:\Users\flobo\Documents\Gits\PD3D\3dstet\Software\Audio Files\talking.wav")
 n = OG_Signal.shape[0]
 
 #inverted_fft = OG_Signal
@@ -194,7 +194,7 @@ inverted_fft = np.abs(inverted_fft.astype(np.int16))
 ##positive_ifft = inverted_fft[range(len(inverted_fft)//2)]
 
 #sf.write(r"C:\Users\pd3dlab\Desktop\Samer FFT\reformated_fft.wav", inverted_fft, 44100)
-wavfile.write(r"C:\Users\pd3dlab\Desktop\Samer FFT\reformated_fft.wav", 44100, inverted_fft)
+wavfile.write(r"C:\Users\flobo\Documents\Gits\PD3D\3dstet\Software\Audio Files\reformated_fft.wav", 44100, inverted_fft)
 
 ##
 ##
