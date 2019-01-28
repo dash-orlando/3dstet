@@ -6,6 +6,7 @@ import  scipy
 import  soundfile                             as  sf
 
 #----1-----
+
 Overlay_FFT = []                                   # empty list to store FFT values for overlay plot 
 Overlay_freqs = []                                 # empty list to store FFT values for overlay plot
 
@@ -33,10 +34,10 @@ def Run_FFT( wav_file ):
     print( "# of Channels           : {} ".format(l_audio)  )
     print( '\n' )
     
-    FFT = np.fft.fft(signal, n)                     # Full FFT
+    FFT = np.fft.rfft(signal, n)                     # Full FFT
     FFT_side = FFT[range(N//2)]                     # One side FFT range
 
-    freqs = np.fft.fftfreq(n, d=Ts)                 # Full FFT frequency
+    freqs = np.fft.rfftfreq(n, d=Ts)                 # Full FFT frequency
     freqs_side = freqs[range(N//2)]                 # One side FFT frequency range
     Mag_db = 20*np.log10(FFT_side/max(FFT_side))    # Converts scale to relative db
 
@@ -185,10 +186,10 @@ plt.grid(True)
 OG_fs_rate, OG_Signal = wavfile.read(r"C:\Users\pd3dlab\Documents\Gits\PD3D\3dstet\Software\Audio Files\talking.wav")
 n = OG_Signal.shape[0]
 
-#inverted_fft = OG_Signal
-#inverted_fft = np.abs(np.fft.ifft(y, n))
-inverted_fft = np.fft.ifft(np.fft.fft(OG_Signal))
-inverted_fft = np.abs(inverted_fft.astype(np.int16))
+inverted_fft = OG_Signal
+inverted_fft = np.fft.irfft(y, n).astype(np.int16)
+#inverted_fft = np.fft.irfft(np.fft.rfft(OG_Signal))
+#inverted_fft = inverted_fft.astype(np.int16)
 
 
 ##positive_ifft = inverted_fft[range(len(inverted_fft)//2)]
